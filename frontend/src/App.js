@@ -202,6 +202,7 @@ class App extends React.Component {
       signedIn: true,
       accountId: newAccountId,
       creating: false,
+      numCreatedAccounts: await this._faucetContract.get_num_created_accounts(),
     })
   }
 
