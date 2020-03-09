@@ -14,7 +14,7 @@ The new account always receives 1/1000 of the remaining balance.
 Proof of Work works the following way:
 
 You need to compute a u64 salt (nonce) for a given account and a given public key in such a way
-that the `sha256(account_id + ':' + public_key + ':' + salt)` has more leading zero bits than
+that the `sha256(account_id + ':' + public_key + ':' + salt)` has at the amount of leading zero bits as
 the required `min_difficulty`.
 
 ## Faucet frontend
