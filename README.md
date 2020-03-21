@@ -1,4 +1,7 @@
-# Proof of Work Faucet
+Proof of Work Faucet
+====================
+
+<!-- MAGIC COMMENT: DO NOT DELETE! Everything above this line is hidden on NEAR Examples page -->
 
 Try it out: https://near-examples.github.io/pow-faucet/
 
