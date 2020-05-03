@@ -19,7 +19,7 @@ Second, this faucet requires [Proof of Work](https://www.khanacademy.org/economi
 Try it out
 ==========
 
-You can see view a live version of this demo: https://near-examples.github.io/pow-faucet/
+You can try out a live version of this demo: https://near-examples.github.io/pow-faucet/
 
 This demo version creates new NEAR TestNet accounts with a `.meta` suffix.
 
