@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Getting Started
+
+1. Prerequisites: Make sure you have node.js installed (we like [asdf] for
+   this), then use it to install [yarn]: `npm install --global yarn` (or just
+   `npm i -g yarn`)
+2. Install dependencies: `yarn install` (or just `yarn`)
+
+  [asdf]: https://github.com/asdf-vm/asdf
+  [yarn]: https://yarnpkg.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
