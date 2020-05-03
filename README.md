@@ -60,3 +60,11 @@ The Contract and the Frontend need to be deployed separately.
 * See instructions on [docs.near.org](https://docs.near.org) for how to [deploy the contract to the NEAR blockchain](https://docs.nearprotocol.com/docs/tutorials/intro-to-rust#finally-test-compile-and-deploy-).
 * The frontend compiles to static assets – HTML, CSS, and JavaScript. The demo frontend is deployed to GitHub Pages using [gh-pages](https://www.npmjs.com/package/gh-pages). Feel free to re-use this approach or [find another](https://www.slant.co/topics/2256/~best-static-website-hosting-provider).
 
+
+See Also
+========
+
+As a follow-up to this demo, we created a [Proof of Work Transfer Faucet](https://github.com/near-examples/token-printer). This "Transfer Faucet" differs from the current example in two main ways:
+
+1. Rather than create a new account, it sends NEAR Tokens to an existing account
+2. Rather than send 1/1000th of the remaining funds, it always sends 100Ⓝ
