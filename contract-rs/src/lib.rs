@@ -1,6 +1,6 @@
 use borsh::{BorshDeserialize, BorshSerialize};
-use near_bindgen::{env, near_bindgen, Promise, PromiseOrValue};
-use near_bindgen::collections::Set;
+use near_sdk::collections::Set;
+use near_sdk::{env, near_bindgen, Promise, PromiseOrValue};
 
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
@@ -46,7 +46,11 @@ fn num_leading_zeros(v: &[u8]) -> u32 {
 }
 
 fn assert_self() {
-    assert_eq!(env::current_account_id(), env::predecessor_account_id(), "Can only be called by owner");
+    assert_eq!(
+        env::current_account_id(),
+        env::predecessor_account_id(),
+        "Can only be called by owner"
+    );
 }
 
 #[near_bindgen]
@@ -57,7 +61,7 @@ impl Faucet {
         Self {
             account_suffix,
             min_difficulty,
-            created_accounts: Set::new(b"a".to_vec())
+            created_accounts: Set::new(b"a".to_vec()),
         }
     }
 
@@ -73,12 +77,23 @@ impl Faucet {
         self.created_accounts.len()
     }
 
-    pub fn create_account(&mut self, account_id: AccountId, public_key: PublicKey, salt: Salt) -> PromiseOrValue<()> {
+    pub fn create_account(
+        &mut self,
+        account_id: AccountId,
+        public_key: PublicKey,
+        salt: Salt,
+    ) -> PromiseOrValue<()> {
         // Checking account_id suffix first.
-        assert!(account_id.ends_with(&self.account_suffix), "Account has to end with the suffix");
+        assert!(
+            account_id.ends_with(&self.account_suffix),
+            "Account has to end with the suffix"
+        );
 
         // Checking that the given account is not created yet.
-        assert!(!self.created_accounts.contains(&account_id), "The given given account is already created");
+        assert!(
+            !self.created_accounts.contains(&account_id),
+            "The given given account is already created"
+        );
 
         // Checking proof of work
         //     Constructing a message for checking
@@ -90,7 +105,10 @@ impl Faucet {
         //     Computing hash of the message
         let hash = env::sha256(&message);
         //     Checking that the resulting hash has enough leading zeros.
-        assert!(num_leading_zeros(&hash) >= self.min_difficulty, "The proof is work is too weak");
+        assert!(
+            num_leading_zeros(&hash) >= self.min_difficulty,
+            "The proof is work is too weak"
+        );
 
         // All checks are good, let's proceed by creating an account
 
@@ -129,13 +147,15 @@ impl Faucet {
 #[cfg(not(target_arch = "wasm32"))]
 #[cfg(test)]
 mod tests {
-    use near_bindgen::{testing_env, VMContext};
-    use near_bindgen::MockedBlockchain;
+    use near_sdk::MockedBlockchain;
+    use near_sdk::{testing_env, VMContext};
     use std::panic;
 
     use super::*;
 
-    fn catch_unwind_silent<F: FnOnce() -> R + panic::UnwindSafe, R>(f: F) -> std::thread::Result<R> {
+    fn catch_unwind_silent<F: FnOnce() -> R + panic::UnwindSafe, R>(
+        f: F,
+    ) -> std::thread::Result<R> {
         let prev_hook = panic::take_hook();
         panic::set_hook(Box::new(|_| {}));
         let result = panic::catch_unwind(f);
@@ -160,6 +180,7 @@ mod tests {
             random_seed: vec![0, 1, 2],
             is_view: false,
             output_data_receivers: vec![],
+            epoch_height: 0,
         }
     }
 
@@ -195,7 +216,8 @@ mod tests {
         testing_env!(context);
         catch_unwind_silent(|| {
             Faucet::default();
-        }).unwrap_err();
+        })
+        .unwrap_err();
     }
 
     #[test]
@@ -210,7 +232,8 @@ mod tests {
         let salt = 0;
         catch_unwind_silent(move || {
             contract.create_account(account_id.to_string(), public_key, salt);
-        }).unwrap_err();
+        })
+        .unwrap_err();
     }
 
     #[test]
@@ -226,7 +249,8 @@ mod tests {
         contract.create_account(account_id.to_string(), public_key.clone(), salt);
         catch_unwind_silent(move || {
             contract.create_account(account_id.to_string(), public_key, salt);
-        }).unwrap_err();
+        })
+        .unwrap_err();
     }
 
     #[test]
