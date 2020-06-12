@@ -1,5 +1,5 @@
 use borsh::{BorshDeserialize, BorshSerialize};
-use near_sdk::collections::Set;
+use near_sdk::collections::UnorderedSet;
 use near_sdk::{env, near_bindgen, Promise, PromiseOrValue};
 
 #[global_allocator]
@@ -24,7 +24,7 @@ pub struct Faucet {
     /// Number of leading zeros in binary representation for a hash
     pub min_difficulty: u32,
     /// Created accounts
-    pub created_accounts: Set<AccountId>,
+    pub created_accounts: UnorderedSet<AccountId>,
 }
 
 impl Default for Faucet {
@@ -61,7 +61,7 @@ impl Faucet {
         Self {
             account_suffix,
             min_difficulty,
-            created_accounts: Set::new(b"a".to_vec()),
+            created_accounts: UnorderedSet::new(b"a".to_vec()),
         }
     }
 
