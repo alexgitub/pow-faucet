@@ -68,3 +68,9 @@ As a follow-up to this demo, we created a [Proof of Work Transfer Faucet](https:
 
 1. Rather than create a new account, it sends NEAR Tokens to an existing account
 2. Rather than send 1/1000th of the remaining funds, it always sends 100Ⓝ
+
+
+Data collection
+===============
+
+By using Gitpod in this project, you agree to opt-in to basic, anonymous analytics. No personal information is transmitted. Instead, these usage statistics aid in discovering potential bugs and user flow information.
