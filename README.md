@@ -3,7 +3,7 @@ Proof of Work Faucet
 
 <!-- MAGIC COMMENT: DO NOT DELETE! Everything above this line is hidden on NEAR Examples page -->
 
-A cryptocurrency "faucet" is a site that gives away cryptocurrency. Faucets are especially common on test networks such as [NEAR TestNet](https://docs.nearprotocol.com/docs/roles/developer/connecting) to allow developers to test apps with tokens which have no monetary value.
+A cryptocurrency "faucet" is a site that gives away cryptocurrency. Faucets are especially common on test networks such as [NEAR TestNet](https://docs.near.org/docs/roles/developer/connecting) to allow developers to test apps with tokens which have no monetary value.
 
 Faucets can run out of tokens, especially if people abuse them and purposely attempt to drain available funds. While test network tokens can be replenished one way or another, doing so can be a hassle, so it's useful to deter this sort of behavior.
 
@@ -57,7 +57,7 @@ Deploying
 
 The Contract and the Frontend need to be deployed separately.
 
-* See instructions on [docs.near.org](https://docs.near.org) for how to [deploy the contract to the NEAR blockchain](https://docs.nearprotocol.com/docs/tutorials/intro-to-rust#finally-test-compile-and-deploy-).
+* See instructions on [docs.near.org](https://docs.near.org) for how to [deploy the contract to the NEAR blockchain](https://docs.near.org/docs/tutorials/intro-to-rust#finally-test-compile-and-deploy-).
 * The frontend compiles to static assets – HTML, CSS, and JavaScript. The demo frontend is deployed to GitHub Pages using [gh-pages](https://www.npmjs.com/package/gh-pages). Feel free to re-use this approach or [find another](https://www.slant.co/topics/2256/~best-static-website-hosting-provider).
 
 

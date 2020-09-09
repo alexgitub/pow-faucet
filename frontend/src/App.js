@@ -56,9 +56,9 @@ class App extends React.Component {
   async initNear() {
     const nearConfig = {
       networkId: 'default',
-      nodeUrl: 'https://rpc.nearprotocol.com',
+      nodeUrl: 'https://rpc.testnet.nearprotocol.com',
       contractName: FaucetName,
-      walletUrl: 'https://wallet.nearprotocol.com',
+      walletUrl: 'https://wallet.testnet.near.org',
     };
     const keyStore = new nearAPI.keyStores.BrowserLocalStorageKeyStore();
     const near = await nearAPI.connect(Object.assign({ deps: { keyStore } }, nearConfig));
@@ -207,7 +207,7 @@ class App extends React.Component {
   }
 
   moveAccountToWallet() {
-    window.location = `https://wallet.nearprotocol.com/recover-with-link/${this._authData.accountId}/${this._authData.seed.seedPhrase}`;
+    window.location = `https://wallet.testnet.near.org/recover-with-link/${this._authData.accountId}/${this._authData.seed.seedPhrase}`;
   }
 
   logout() {
