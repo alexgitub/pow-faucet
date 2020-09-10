@@ -4,3 +4,5 @@ RUN bash -cl "rustup toolchain install stable && rustup target add wasm32-unknow
 
 RUN bash -c ". .nvm/nvm.sh \
              && nvm install v12 && nvm alias default v12"
+
+RUN npm install -g yarn
