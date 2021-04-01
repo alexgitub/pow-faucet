@@ -1,6 +1,6 @@
-use borsh::{BorshDeserialize, BorshSerialize};
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::UnorderedSet;
-use near_sdk::{env, near_bindgen, Promise, PromiseOrValue};
+use near_sdk::{env, near_bindgen, Promise, PromiseOrValue, PanicOnDefault};
 
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
@@ -17,7 +17,7 @@ pub type Salt = u64;
 /// that the `sha256(account_id + ':' + public_key + ':' + salt)` has more leading zero bits than
 /// the required `min_difficulty`.
 #[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize)]
+#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
 pub struct Faucet {
     /// Account ID which will be a suffix for each account (including a '.' separator).
     pub account_suffix: AccountId,
@@ -25,12 +25,6 @@ pub struct Faucet {
     pub min_difficulty: u32,
     /// Created accounts
     pub created_accounts: UnorderedSet<AccountId>,
-}
-
-impl Default for Faucet {
-    fn default() -> Self {
-        panic!("Faucet is not initialized yet")
-    }
 }
 
 /// Returns the number of leading zero bits for a given slice of bits.
