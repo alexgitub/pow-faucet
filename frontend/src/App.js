@@ -55,7 +55,7 @@ class App extends React.Component {
 
   async initNear() {
     const nearConfig = {
-      networkId: 'default',
+      networkId: 'testnet',
       nodeUrl: 'https://rpc.testnet.nearprotocol.com',
       contractName: FaucetName,
       walletUrl: 'https://wallet.testnet.near.org',
