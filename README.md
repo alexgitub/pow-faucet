@@ -57,7 +57,12 @@ Deploying
 
 The Contract and the Frontend need to be deployed separately.
 
+## Contract
+
 * See instructions on [docs.near.org](https://docs.near.org) for how to [deploy the contract to the NEAR blockchain](https://docs.near.org/docs/tutorials/intro-to-rust#finally-test-compile-and-deploy-).
+
+## Frontend
+
 * The frontend compiles to static assets – HTML, CSS, and JavaScript. The demo frontend is deployed to GitHub Pages using [gh-pages](https://www.npmjs.com/package/gh-pages). Feel free to re-use this approach or [find another](https://www.slant.co/topics/2256/~best-static-website-hosting-provider).
 
 
