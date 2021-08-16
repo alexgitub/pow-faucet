@@ -71,8 +71,8 @@ Behind the scenes, this is creating an account and deploying a contract to it. O
 
 >Done deploying to dev-1234567890123
 
-In this instance, the account is `dev-1234567890123`. A file has been created containing the key to the
-account, located at `neardev/dev-account`. To make the next few steps easier, we're going to set an
+In this instance, the account is `dev-1234567890123`. A file has been created containing a key pair to
+the account, located at `neardev/dev-account`. To make the next few steps easier, we're going to set an
 environment variable containing this development account id and use that when copy/pasting commands.
 Run this command to the environment variable:
 
