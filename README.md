@@ -61,9 +61,7 @@ The Contract and the Frontend need to be deployed separately.
 
 ### Quickest deploy
 
-Build and deploy this smart contract to a development account. This development account will be created
-automatically and is not intended to be permanent. Please see the "Standard deploy" section for creating
-a more personalized account to deploy to.
+Build and deploy this smart contract to a development account. [Dev Accounts](https://docs.near.org/docs/concepts/account#dev-accounts) are auto-generated accounts to assist in developing and testing smart contracts. Please see the "Standard deploy" section for creating a more personalized account to deploy to.
 
 ```bash
 near dev-deploy --wasmFile res/faucet.wasm --helperUrl https://near-contract-helper.onrender.com
