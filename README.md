@@ -49,7 +49,7 @@ Faucet Frontend
 
 This contains the JavaScript that shows the UI and runs the proof-of-work algorithm. It lives in the `frontend` folder.
 
-It was bootstrapped with [`create-react-app`](https://create-react-app.dev). Check out the README in the `frontend` folder to learn how to play with the code.
+It was bootstrapped with [`create-react-app`](https://create-react-app.dev). Check out the [https://github.com/near-examples/pow-faucet/blob/master/frontend/README.md](README) in the `frontend` folder to learn how to play with the code.
 
 
 Deploying
@@ -57,7 +57,52 @@ Deploying
 
 The Contract and the Frontend need to be deployed separately.
 
+## Contract
+
+### Quickest deploy
+
+Build and deploy this smart contract to a development account. [Dev Accounts](https://docs.near.org/docs/concepts/account#dev-accounts) are auto-generated accounts to assist in developing and testing smart contracts. Please see the [Standard deploy](#standard-deploy) section for creating a more personalized account to deploy to.
+
+```bash
+near dev-deploy --wasmFile res/faucet.wasm --helperUrl https://near-contract-helper.onrender.com
+```
+
+Behind the scenes, this is creating an account and deploying a contract to it. On the console, notice a message like:
+
+>Done deploying to dev-1234567890123
+
+In this instance, the account is `dev-1234567890123`. A file has been created containing a key pair to
+the account, located at `neardev/dev-account`. To make the next few steps easier, we're going to set an
+environment variable containing this development account id and use that when copy/pasting commands.
+Run this command to the environment variable:
+
+```bash
+source neardev/dev-account.env
+```
+
+You can tell if the environment variable is set correctly if your command line prints the account name after this command:
+```bash
+echo $CONTRACT_NAME
+```
+
+The next command will initialize the contract using the `new` method:
+
+```bash
+near call $CONTRACT_NAME new '{"account_suffix":"aloha", "min_difficulty": 10}' --accountId $CONTRACT_NAME
+```
+
+To retrieve the number of created accounts, call `get_num_created_accounts` with the following:
+
+```bash
+near call $CONTRACT_NAME get_num_created_accounts '' --accountId $CONTRACT_NAME
+```
+
+### Standard deploy
+
 * See instructions on [docs.near.org](https://docs.near.org) for how to [deploy the contract to the NEAR blockchain](https://docs.near.org/docs/tutorials/intro-to-rust#finally-test-compile-and-deploy-).
+
+## Frontend
+
 * The frontend compiles to static assets – HTML, CSS, and JavaScript. The demo frontend is deployed to GitHub Pages using [gh-pages](https://www.npmjs.com/package/gh-pages). Feel free to re-use this approach or [find another](https://www.slant.co/topics/2256/~best-static-website-hosting-provider).
 
 
